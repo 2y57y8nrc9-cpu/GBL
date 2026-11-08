@@ -1,0 +1,283 @@
+{
+  "properties": {
+    "units_in_meter": 100,
+    "curvature_coords": "relative",
+    "normalized_edge_loops": true
+  },
+  "pattern": {
+    "panel_order": [
+      "corsage_devant",
+      "corsage_dos"
+    ],
+    "panels": {
+      "corsage_devant": {
+        "vertices": [
+          [
+            -19,
+            -2
+          ],
+          [
+            -25,
+            -24
+          ],
+          [
+            -25,
+            -59
+          ],
+          [
+            25,
+            -59
+          ],
+          [
+            25,
+            -24
+          ],
+          [
+            19,
+            -2
+          ],
+          [
+            9,
+            0
+          ],
+          [
+            -9,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "emmanchure_gauche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "cote_gauche"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "cote_droit"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "emmanchure_droite"
+          },
+          {
+            "endpoints": [
+              5,
+              6
+            ],
+            "label": "epaule_droite"
+          },
+          {
+            "endpoints": [
+              6,
+              7
+            ],
+            "label": "encolure",
+            "curvature": {
+              "type": "quadratic",
+              "params": [
+                [
+                  0.5,
+                  0.17
+                ]
+              ]
+            }
+          },
+          {
+            "endpoints": [
+              7,
+              0
+            ],
+            "label": "epaule_gauche"
+          }
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          12
+        ]
+      },
+      "corsage_dos": {
+        "vertices": [
+          [
+            -19,
+            -2
+          ],
+          [
+            -25,
+            -24
+          ],
+          [
+            -25,
+            -59
+          ],
+          [
+            25,
+            -59
+          ],
+          [
+            25,
+            -24
+          ],
+          [
+            19,
+            -2
+          ],
+          [
+            9,
+            0
+          ],
+          [
+            -9,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "emmanchure_gauche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "cote_gauche"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "cote_droit"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "emmanchure_droite"
+          },
+          {
+            "endpoints": [
+              5,
+              6
+            ],
+            "label": "epaule_droite"
+          },
+          {
+            "endpoints": [
+              6,
+              7
+            ],
+            "label": "encolure",
+            "curvature": {
+              "type": "quadratic",
+              "params": [
+                [
+                  0.5,
+                  0.055
+                ]
+              ]
+            }
+          },
+          {
+            "endpoints": [
+              7,
+              0
+            ],
+            "label": "epaule_gauche"
+          }
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          -12
+        ]
+      }
+    },
+    "stitches": [
+      [
+        {
+          "panel": "corsage_devant",
+          "edge": 5
+        },
+        {
+          "panel": "corsage_dos",
+          "edge": 5
+        }
+      ],
+      [
+        {
+          "panel": "corsage_devant",
+          "edge": 3
+        },
+        {
+          "panel": "corsage_dos",
+          "edge": 3
+        }
+      ],
+      [
+        {
+          "panel": "corsage_devant",
+          "edge": 1
+        },
+        {
+          "panel": "corsage_dos",
+          "edge": 1
+        }
+      ],
+      [
+        {
+          "panel": "corsage_devant",
+          "edge": 7
+        },
+        {
+          "panel": "corsage_dos",
+          "edge": 7
+        }
+      ]
+    ]
+  }
+}

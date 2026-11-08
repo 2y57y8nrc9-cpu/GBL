@@ -1,0 +1,156 @@
+[
+  {
+    "id": "01_tshirt_regular",
+    "title": "T-shirt classique / témoin 3D",
+    "category": "haut",
+    "description": "Manches élargies pour avatar pédagogique et coutures coordonnées ; patron expérimental",
+    "file": "01_tshirt_regular_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "02_tshirt_oversize",
+    "title": "T-shirt / oversized",
+    "category": "haut",
+    "description": "Volumes généreux, coutures plus longues",
+    "file": "02_tshirt_oversize_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "03_cropped_top",
+    "title": "Top court",
+    "category": "haut",
+    "description": "Corsage raccourci, contour régulier",
+    "file": "03_cropped_top_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "04_debardeur",
+    "title": "Débardeur / sans manches",
+    "category": "haut",
+    "description": "Emmanchures libres, bords exposés",
+    "file": "04_debardeur_specification.json",
+    "panels": 2,
+    "stitches": 4,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "05_tunique_asymetrique",
+    "title": "Tunique / ourlet oblique",
+    "category": "haut",
+    "description": "Différentiel d’ourlet cohérent devant/dos",
+    "file": "05_tunique_asymetrique_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "06_robe_tshirt",
+    "title": "Robe T-shirt",
+    "category": "robe",
+    "description": "Panneaux allongés et manches de base",
+    "file": "06_robe_tshirt_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "07_jupe_droite",
+    "title": "Jupe droite",
+    "category": "jupe",
+    "description": "Deux panneaux, côtés cousus",
+    "file": "07_jupe_droite_specification.json",
+    "panels": 2,
+    "stitches": 4,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "08_jupe_trapeze",
+    "title": "Jupe trapèze",
+    "category": "jupe",
+    "description": "Évasement marqué de l’ourlet",
+    "file": "08_jupe_trapeze_specification.json",
+    "panels": 2,
+    "stitches": 4,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "09_jupe_asymetrique",
+    "title": "Jupe asymétrique",
+    "category": "jupe",
+    "description": "Ourlet dissymétrique sur deux panneaux",
+    "file": "09_jupe_asymetrique_specification.json",
+    "panels": 2,
+    "stitches": 4,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "10_pantalon_droit",
+    "title": "Pantalon droit",
+    "category": "pantalon",
+    "description": "Quatre panneaux + lignes d’entrejambe",
+    "file": "10_pantalon_droit_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "11_pantalon_large",
+    "title": "Pantalon ample",
+    "category": "pantalon",
+    "description": "Jambes larges et formes rectilignes",
+    "file": "11_pantalon_large_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "12_short_structural",
+    "title": "Short expérimental",
+    "category": "pantalon",
+    "description": "Patron court, mutations du bassin",
+    "file": "12_short_structural_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "13_sarouel_bas",
+    "title": "Pantalon entrejambe basse",
+    "category": "pantalon",
+    "description": "Montant augmenté, structure à vérifier",
+    "file": "13_sarouel_bas_specification.json",
+    "panels": 4,
+    "stitches": 10,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  },
+  {
+    "id": "14_tunique_sans_manches",
+    "title": "Tunique / enveloppe",
+    "category": "haut",
+    "description": "Surface presque architecturale",
+    "file": "14_tunique_sans_manches_specification.json",
+    "panels": 2,
+    "stitches": 4,
+    "source": "original — Garment Bending Lab",
+    "validated_physical_fit": false
+  }
+]

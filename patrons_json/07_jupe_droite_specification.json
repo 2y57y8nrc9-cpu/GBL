@@ -1,0 +1,221 @@
+{
+  "properties": {
+    "units_in_meter": 100,
+    "curvature_coords": "relative",
+    "normalized_edge_loops": true
+  },
+  "pattern": {
+    "panel_order": [
+      "jupe_devant",
+      "jupe_dos"
+    ],
+    "panels": {
+      "jupe_devant": {
+        "vertices": [
+          [
+            -23,
+            -19
+          ],
+          [
+            -23,
+            -63
+          ],
+          [
+            23,
+            -63
+          ],
+          [
+            23,
+            -19
+          ],
+          [
+            18,
+            0
+          ],
+          [
+            -18,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "cote_gauche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "cote_droit"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "hanche_droite"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "taille"
+          },
+          {
+            "endpoints": [
+              5,
+              0
+            ],
+            "label": "hanche_gauche"
+          }
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          13
+        ]
+      },
+      "jupe_dos": {
+        "vertices": [
+          [
+            -23,
+            -19
+          ],
+          [
+            -23,
+            -63
+          ],
+          [
+            23,
+            -63
+          ],
+          [
+            23,
+            -19
+          ],
+          [
+            18,
+            0
+          ],
+          [
+            -18,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "cote_gauche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "cote_droit"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "hanche_droite"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "taille"
+          },
+          {
+            "endpoints": [
+              5,
+              0
+            ],
+            "label": "hanche_gauche"
+          }
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          -13
+        ]
+      }
+    },
+    "stitches": [
+      [
+        {
+          "panel": "jupe_devant",
+          "edge": 3
+        },
+        {
+          "panel": "jupe_dos",
+          "edge": 3
+        }
+      ],
+      [
+        {
+          "panel": "jupe_devant",
+          "edge": 2
+        },
+        {
+          "panel": "jupe_dos",
+          "edge": 2
+        }
+      ],
+      [
+        {
+          "panel": "jupe_devant",
+          "edge": 0
+        },
+        {
+          "panel": "jupe_dos",
+          "edge": 0
+        }
+      ],
+      [
+        {
+          "panel": "jupe_devant",
+          "edge": 5
+        },
+        {
+          "panel": "jupe_dos",
+          "edge": 5
+        }
+      ]
+    ]
+  }
+}

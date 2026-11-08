@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garment Bending Lab — V1.0 / Structured Sewing Pattern + Cloth Mesh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead"><div><div class="eyebrow">RESEARCH SOFTWARE / 010</div><h1>GARMENT <em>BENDING</em> LAB</h1><p>Measured pattern generator × structural hallucination engine</p></div><div class="version">V 1.0<br><span>LOCAL / OFFLINE</span></div></header>
+<main>
+<aside class="controls">
+  <section><h2>01 / Construction</h2>
+    <label for="base">Base géométrique</label>
+    <select id="base"><option value="tshirt_custom">T-shirt paramétrique (mensurations)</option><option value="pdf_import" disabled>Patron PDF importé (après sélection de pièces)</option><option value="top">Top géométrique V0.2</option><option value="dress">Robe V0.2</option><option value="skirt">Jupe V0.2</option><option value="trouser">Pantalon V0.2</option><option value="pelvic_bridge">Pelvic Bridge · pantalon en pont</option><option value="misregistered_jacket">Misregistered Jacket · veste anormale</option><option value="limb_transposition">Limb Transposition · bras et torse</option><option value="collar_slip">Collar Slip · col défaillant</option></select>
+    <p class="note">Générateur original indépendant, inspiré du workflow de patronage sur mesure. Ni code Nastix ni gabarit DRCOS recopié.</p>
+  </section>
+  <section id="parametricControls"><h2>02 / Mensurations en cm</h2>
+    <button type="button" id="toggleMeasurements" class="measurement-toggle" aria-expanded="true" aria-controls="measurementPanel">Masquer les mensurations ▴</button>
+    <div id="measurementPanel">
+    <label for="fit">Coupe de départ</label>
+    <select id="fit"><option value="regular">Regular</option><option value="relaxed">Relaxed</option><option value="cropped">Cropped (longueur × 0,81)</option><option value="oversized">Oversized</option></select>
+    <p class="note">Les mensurations sont celles du corps ; les aisances s'ajoutent pour obtenir le patron.</p>
+    <div class="measure-grid" id="measureFields"></div>
+    <details class="details"><summary>Encolure, aisances et réglages avancés</summary><div class="measure-grid" id="advancedFields"></div></details>
+    <div class="inline actions"><button type="button" id="resetMeasurements">Réinitialiser les mesures</button><button type="button" id="updateDraft">Recalculer</button></div>
+    <p class="note" id="draftNote">Lignes de couture nominales, sans marges ni gradation validées.</p>
+    </div>
+  </section>
+  <section><h2>03 / Corruption</h2>
+    <label class="label-row" for="intensity"><span>Intensité globale</span><strong id="intensityValue">40 %</strong></label>
+    <input id="intensity" type="range" min="0" max="100" value="40" step="1">
+    <div class="continuum"><span>ALMOST REAL</span><span>UNCANNY</span><span>UNRECOGNIZABLE</span></div>
+    <div class="meter"><div id="meterBar"></div></div><p class="status" id="modeText">Zone intermédiaire</p>
+    <label for="seed">Seed / reproductibilité</label><div class="inline"><input id="seed" type="number" min="0" max="4294967295" value="2841"><button id="shuffle" title="Changer la graine">↻</button></div>
+  </section>
+  <section><h2>04 / Opérateurs</h2>
+    <label class="linked-control"><input id="linkedSeams" type="checkbox" checked> <strong>Propager les coutures liées</strong></label><p class="note">Quand une emmanchure liée change, la couture correspondante est recalée sur la même longueur. Un appariement manuel confirmé est nécessaire pour les PDF.</p><div class="check-list">
+      <label><input type="checkbox" id="op-drift" checked><span><b>Contour drift</b><small>Dérive de contour</small></span></label>
+      <label><input type="checkbox" id="op-displacement" checked><span><b>Anatomical displacement</b><small>Décalage de région</small></span></label>
+      <label><input type="checkbox" id="op-seam" checked><span><b>Seam derangement</b><small>Désaccord de couture</small></span></label>
+      <label><input type="checkbox" id="op-growth"><span><b>Synthetic growth</b><small>Excrescence localisée</small></span></label>
+      <label><input type="checkbox" id="op-spatial"><span><b>Spatial assimilation</b><small>Attraction architecturale</small></span></label>
+      <label><input type="checkbox" id="op-ghost"><span><b>Ghost replication</b><small>Écho non découpable</small></span></label>
+      <label><input type="checkbox" id="op-topology"><span><b>Topology confusion</b><small>Permutation de raccords</small></span></label>
+      <label><input type="checkbox" id="op-joint"><span><b>Joint collapse</b><small>Articulation déplacée</small></span></label>
+      <label><input type="checkbox" id="op-fusion"><span><b>Panel fusion</b><small>Ajouter une membrane entre deux pièces</small></span></label>
+    </div>
+    <div class="preset-row"><button type="button" data-preset="subtle">SUBTLE</button><button type="button" data-preset="liminal">LIMINAL</button><button type="button" data-preset="radical">RADICAL</button></div>
+    <div class="stitchfit-controls" id="stitchFitControls">
+      <h3>ÉGALISATION AUTOMATIQUE DES COUTURES</h3>
+      <label class="linked-control"><input type="checkbox" id="autoFitSeams" checked> Ajuster les longueurs des bords liés après mutation</label>
+      <label for="fitStrategy">Mode de correction</label><select id="fitStrategy"><option value="balanced">Répartir l'écart sur les deux pièces</option><option value="receiver">Préserver A, ajuster la pièce B</option></select>
+      <label for="fitLimit">Correction maximale par couture</label>
+      <select id="fitLimit"><option value="8">8 % · prudent</option><option value="18" selected>18 % · expérimental</option><option value="35">35 % · radical / toile obligatoire</option><option value="60">60 % · déformation majeure, non validée</option></select>
+      <button type="button" id="fitNow" class="action">ÉGALISER LES COUTURES ↗</button>
+      <p class="note">Ajustement des longueurs sur les contours disponibles (souvent lignes de coupe). Les repères, l'aisance et la ligne de piqûre restent à contrôler. Toute correction excessive est signalée.</p>
+    </div>
+  </section>
+  <section><h2>05 / Génération et export</h2>
+    <button class="action" id="generate">GENERATE MUTATION <span>↗</span></button>
+    <div class="inline actions"><button id="saveSvg">SVG · mm</button><button id="saveOriginal">SVG original</button></div>
+    <div class="inline actions"><button id="saveA4">Planches A4 · HTML</button><button id="printA4">Imprimer A4</button></div>
+    <div class="inline actions"><button id="saveJson">Config JSON</button><button id="loadJson">Ouvrir JSON</button></div>
+    <div class="inline actions"><button id="saveArchive">Archive JSON</button></div>
+    <input id="fileInput" type="file" accept=".json,application/json" hidden>
+    <p class="note">L'export A4 crée des pages à imprimer en 100 %, sans ajustement. Un carré de 5 × 5 cm est prévu pour vérifier l'échelle. Pas de marges de couture ajoutées.</p>
+  </section>
+  <section class="pdf-main-panel" id="pdfModule"><h2>06 / IMPORT PDF × ASSEMBLAGE A4</h2>
+    <p class="note">Dépose un PDF vectoriel : le laboratoire tente le recalage A4, détecte les pièces, infère les coutures, accepte uniquement les raccords suffisamment plausibles et ouvre automatiquement les mutations. Les associations non fiables ne sont pas inventées.</p>
+    <div class="autolab-intro"><div class="autolab-tag">NEW / AUTOMATED WORKFLOW</div><strong>PDF → pièces → associations → mutations</strong>
+      <label for="autoMode">Tolérance de reconstruction</label><select id="autoMode"><option value="conservative">Prudente · bloquer les coutures douteuses</option><option value="experimental">Expérimentale · autoriser davantage d'ajustements</option></select>
+      <label class="linked-control"><input type="checkbox" id="autoOnImport" checked> Démarrer automatiquement l'analyse après import</label>
+      <p class="note">Un écart important ou un col à répartir sur plusieurs pièces entraîne un avertissement explicite. Une pièce détectée n'est pas automatiquement un patron correctement assemblé.</p>
+    </div>
+    <div id="pdfDropzone" class="pdf-dropzone" tabindex="0" role="button" aria-label="Déposer un PDF vectoriel ou ouvrir le sélecteur de fichier">Glisse ton PDF ici ou utilise le bouton ci-dessous <span>· fichier traité localement</span></div>
+    <button class="action" type="button" id="importPdf">IMPORTER ET ANALYSER UN PDF <span>↗</span></button>
+    <div id="autoPipelineReport" class="auto-report" role="status" aria-live="polite"><strong>Prêt.</strong> Le rapport d'assemblage apparaîtra ici après l'importation.</div>
+    <div class="inline actions"><button type="button" id="autoReanalyze" disabled>Réexaminer le PDF</button><button type="button" id="autoInspect" disabled>Inspecter les coutures</button></div>
+    <input type="file" id="pdfVectorInput" accept="application/pdf,.pdf" hidden><button type="button" id="pdfExpand" hidden>AGRANDIR L’ATELIER ⛶</button>
+    <div id="pdfStatus" class="pdf-feedback" role="status">Prêt pour un PDF A4 (par exemple DRCOS).</div>
+    <div id="pdfImportTools" hidden>
+      <p class="note"><strong id="pdfSource"></strong></p><p class="note" id="pdfFound"></p>
+      <div class="pdf-autoreg" id="pdfRegInfo"></div>
+      <button type="button" id="pdfAutoRegister">Recalculer depuis les repères vectoriels</button>
+      <details><summary>Calibrage manuel des feuilles · autres PDF</summary>
+        <label for="pdfColCount">Nombre de colonnes</label><input id="pdfColCount" type="number" min="1" max="12" value="4">
+        <label for="pdfPageOrder">Ordre des pages</label><select id="pdfPageOrder"><option value="column">Par colonnes (haut → bas)</option><option value="row">Par rangées (gauche → droite)</option></select>
+        <div class="inline"><label>Recouvrement X (mm)<input id="pdfOverlapX" type="number" min="0" max="80" step="0.1" value="14"></label><label>Recouvrement Y (mm)<input id="pdfOverlapY" type="number" min="0" max="80" step="0.1" value="17"></label></div>
+        <button id="pdfApplyGrid" type="button">Appliquer la grille estimée</button>
+        <p class="note">Pour aligner précisément un autre PDF : ajuste les décalages de chaque feuille en mm à partir des lignes et repères imprimés. Aucune découpe sans vérification des jonctions.</p>
+        <div id="pdfPages" class="pdf-pages"></div>
+        <div class="inline actions"><button id="pdfDownloadCalibration">Exporter calibration</button><button id="pdfLoadCalibration">Importer calibration</button></div>
+        <input type="file" id="pdfCalibrationInput" accept=".json,application/json" hidden>
+      </details>
+      <label for="minTraceLength">Longueur minimum d'un tracé candidat (mm)</label><input id="minTraceLength" value="7" type="number" min="1" max="200" step="1">
+      <label for="pdfZoom">Zoom de vérification <span id="pdfZoomValue">100 %</span></label><input id="pdfZoom" type="range" min="75" max="400" value="100" step="25"><div id="pdfAssembly" class="pdf-assembly"></div>
+      <p class="note">Clique directement sur les courbes pour les sélectionner. Les contours sombres sont extraits comme vecteurs ; les annotations et cadres gris sont filtrés autant que possible.</p>
+      <p id="pdfSelected" class="note"></p>
+      <div class="pdf-traces" id="pdfTraceList"></div>
+      <button type="button" id="pdfAutoPieces" class="action">DÉTECTER LES PIÈCES FERMÉES ↗</button><p class="note">Propositions non garanties : élimine les doublons imbriqués (ligne de coupe / ligne de couture), puis attribue un rôle à chaque pièce.</p>
+      <div class="inline actions"><button type="button" id="pdfClearSelection">Désélectionner</button><button type="button" id="pdfDownloadStitched">Planche SVG assemblée</button></div>
+      <label class="pdf-experimental"><input type="checkbox" id="experimentalClosure"> Autoriser la fermeture expérimentale de contours ouverts (écart affiché, à vérifier)</label>
+      <button class="action" id="pdfAddPiece" type="button">TRANSFORMER LA SÉLECTION EN PIÈCE <span>↗</span></button>
+      <div id="pdfPieces" class="pdf-piece-list"></div><p class="note" id="pdfPieceCount"></p>
+      <div class="stitch-tool" id="stitchTool">
+        <h3>ATELIER COUTURES · STITCH GRAPH</h3>
+        <button type="button" id="pdfSwitchView">Afficher les pièces / marquer les coutures</button>
+        <p class="note">Sélectionne un panneau A, clique sur deux points de son bord, puis fais de même sur le panneau B. Une suggestion automatique peut proposer le bord B, mais <b>tu dois la confirmer</b>.</p>
+        <label>Pièce A <select id="pdfSeamA"></select></label><label>Pièce B <select id="pdfSeamB"></select></label>
+        <div class="inline actions"><button type="button" id="pdfPickA">Marquer bord A</button><button type="button" id="pdfPickB">Marquer bord B</button></div>
+        <button type="button" id="pdfSuggestSeam">Suggérer le raccord B</button>
+        <div id="pdfSeamHint" class="pdf-feedback" role="status">Détecte ou ajoute des pièces pour commencer.</div>
+        <button type="button" class="action" id="pdfLinkSeam">CONFIRMER ET LIER LES COUTURES ↗</button>
+        <div id="pdfSeamList" class="pdf-seam-list"></div>
+      </div>
+      <div class="semantic-tool" id="semanticTool">
+        <h3>RECONNAISSANCE / ASSEMBLAGE ASSISTÉ</h3>
+        <p class="note">Identification heuristique des bords sur la <strong>géométrie de coupe</strong>. Vérifier les crans, les repères, les marges et les lignes de couture réelles. Les noms sont des hypothèses, pas une lecture certaine du patron.</p>
+        <button id="pdfAnalyzeEdges" type="button">01 · ANALYSER LES BORDS ↗</button>
+        <div id="pdfSemanticList" class="semantic-list" aria-live="polite"></div>
+        <button id="pdfSuggestAssembly" type="button">02 · PROPOSER L’ASSEMBLAGE COMPLET ↗</button>
+        <div id="pdfAutoAssembly" class="semantic-list" aria-live="polite"></div>
+        <button id="pdfConfirmSuggested" type="button" class="action">03 · CONFIRMER LES RACCORDS COCHÉS ↗</button>
+        <p class="note">Les raccords rouges ou complexes restent proposés mais décochés. Les éléments multipièces (ex. bande de col + deux encolures) exigent encore une répartition manuelle.</p>
+      </div>
+      <button type="button" class="action" id="pdfUsePieces">MUTER LES PIÈCES IMPORTÉES ↗</button>
+      <p class="note"><strong>Important :</strong> un appariement par longueurs ou courbures ne prouve pas que deux bords doivent être cousus. Vérifie les encoches, les marges et le sens du tissu avant toute coupe.</p>
+    </div>
+  </section>
+  <section><h2>07 / Études visuelles</h2>
+    <p class="note">Scénarios inspirés de tes photos : boutons de recherche et non reproduction automatique de leurs objets.</p>
+    <div class="study-list">
+      <button type="button" data-study="pelvis">01 · Pelvic Bridge / IMG_0159</button>
+      <button type="button" data-study="jacket">02 · Misregistered Jacket / IMG_0821</button>
+      <button type="button" data-study="limb">03 · Limb Transposition / IMG_0522</button>
+      <button type="button" data-study="collar">04 · Collar Slip / IMG_9999</button>
+    </div>
+  </section>
+  <section class="gcd-section" id="gcdSection"><h2>07B / GARMENTCODE DATA · PATRONS COUSUS EN 3D</h2>
+    <p class="note">Import de spécifications GarmentCodeData <b>JSON structurées</b> avec les paires de coutures indiquées par leur source. C'est plus fiable qu'un PDF pour déterminer quelles pièces assembler.</p>
+    <div class="actions inline"><button type="button" id="gcdImport">Importer spécification .json</button><input type="file" id="gcdFile" accept=".json,application/json" hidden><button type="button" id="gcdDemo">Charger le mini-exemple</button></div>
+    <div class="actions inline"><button type="button" id="seamModelImport">Tester un modèle appris (.json)</button><input type="file" id="seamModelFile" accept=".json" hidden></div><p class="note" id="seamModelStatus" role="status">Modèle : aucun. Les prédictions d'un modèle seront comparées aux coutures connues, sans modifier les raccords confirmés.</p>
+    <div class="actions inline"><button type="button" id="gcdAutoDiagnose">6 essais de correction (géométrie/3D)</button><button type="button" id="gcdExportFeedback">Exporter la fiche d’erreur JSON</button></div>
+    <label for="gcdUserLabel">Ton verdict sur la mutation</label><select id="gcdUserLabel"><option value="unverified">Non évaluée</option><option value="interesting">Anomalie intéressante</option><option value="unwearable">Physiquement invraisemblable</option><option value="toile">À tester en toile</option></select>
+    <label for="gcdUserNotes">Observations</label><textarea id="gcdUserNotes" rows="2" placeholder="Déformation, couture, tombé, faille, idée à conserver…"></textarea>
+    <p role="status" id="gcdIterationStatus" class="note">Les essais répétés améliorent les paramètres par recherche locale ; ils ne réentraînent pas le modèle neuronal.</p>
+    <p role="status" id="gcdStatus" class="note">En attente d'un fichier GarmentCodeData *_specification.json. La démo est originale, ce n'est pas un échantillon du corpus officiel.</p>
+    <label><input type="checkbox" id="gcdSeamAware" checked> Préserver et propager les associations de couture explicites</label>
+    <p class="note">Sur les données structurées, les associations de couture sont connues, non devinées. Pour les PDF DRCOS, les raccords restent inférés et parfois incertains.</p>
+   </section>
+  <section><h2>08 / DRCOS · patrons sources à télécharger</h2>
+    <p class="note">Liens vers les pages officielles. L'application ne télécharge pas ces PDF et n'inclut aucun patron propriétaire DRCOS.</p>
+    <div class="catalog-list" id="catalog"></div>
+  </section>
+  <section><h2>09 / Archive</h2><div id="history" class="history"></div><p class="note">Stockage local si disponible ; exporter l'archive pour sauvegarde durable.</p></section>
+</aside>
+<div class="workspace">
+  <div class="workspace-head"><div><div class="eyebrow">MALFORMED REALITY / MEASURED DRAFTS</div><h2>Du corps mesuré au patron halluciné</h2></div><div class="seed-stamp" id="stamp">#2841 / 40%</div></div>
+  <div class="previews"><article class="preview"><div class="preview-title"><span>01 — GENERATED BASE</span><span>ORIGINAL · LIGNES DE COUTURE</span></div><div class="svg-container" id="original"></div></article><article class="preview"><div class="preview-title"><span>02 — CORRUPTED</span><span>STRUCTURAL MUTATION</span></div><div class="svg-container" id="mutated"></div></article></div>
+  <article class="info 3d-preview" id="preview3dPanel"><div class="preview-title"><span>03 — AVATAR / TOMBÉ CALCULÉ</span><span>3D EXPÉRIMENTALE · RESSORTS + GRAVITÉ + COLLISIONS SIMPLIFIÉES</span></div>
+    <canvas id="garment3dCanvas" width="920" height="515" aria-label="Prévisualisation avant après sur avatar, tourner avec la souris"></canvas>
+    <div class="human-render-settings"><span class="human-render-label">AVATAR ANATOMIQUE / RENDU DE RECHERCHE</span><label>Teinte de peau <select id="humanSkin"><option value="warm">Chaud · beige</option><option value="medium">Médium</option><option value="deep">Foncé</option><option value="neutral">Argile neutre</option></select></label><label>Morphologie <select id="humanBody"><option value="average">Moyenne</option><option value="slim">Élancée</option><option value="broad">Carrure large</option></select></label><label><input type="checkbox" id="showHuman" checked> Afficher l'avatar</label></div>
+    <div class="preview-settings drape-controls">
+      <label>Angle <input type="range" id="garment3dAngle" min="-180" max="180" value="-22" step="2"></label>
+      <label>Aisance volumique <input type="range" id="garment3dVolume" min="65" max="160" value="115" step="5"></label>
+      <label>Gravité <input type="range" id="garment3dGravity" min="0" max="200" value="100" step="10"></label>
+      <label>Avatar / gabarit <input type="range" id="garment3dAvatar" min="78" max="125" value="100" step="3"></label>
+    </div>
+    <div class="inline actions"><button type="button" id="recalculateDrape">Recalculer le tombé</button><button type="button" id="save3dPreview">Exporter aperçu PNG</button></div>
+    <p class="drape-status" role="status" id="drapeStatus">Le modèle sera calculé après génération d'un vêtement.</p>
+    <div class="actions inline"><button type="button" id="exportMeshOBJ">Exporter le maillage 3D (.obj)</button><span id="meshStatus" class="note">Mode structurel : disponible après import JSON GarmentCode ; PDF : aperçu proxy tant que la pose 3D reste inconnue.</span></div>
+    <p class="note">Avatar humanoïde procédural, éclairage amélioré et approximation numérique du drapé. Contrairement à CLO3D, cet aperçu ne reconstruit pas encore chaque pièce 2D par maillage cousu sur un corps scanné et n'identifie pas les caractéristiques mécaniques réelles du tissu. À utiliser comme aperçu créatif, non comme preuve de faisabilité.</p>
+  </article>
+  <div class="below"><article class="info"><h3>Construction paramétrique</h3><div id="patternMetrics" class="pattern-metrics"></div><div id="draftWarnings" class="alerts"></div><h3>Diagnostic des mutations</h3>
+    <div id="feasibilityPanel" class="feasibility-panel" role="status" aria-live="polite"><label class="material-choice">Hypothèse matière <select id="fabricPreset"><option value="woven">Tissé souple (référence)</option><option value="jersey">Maille / jersey extensible</option><option value="rigid">Matière rigide / enduite</option></select></label><strong id="feasibilityStatus">Analyse de faisabilité…</strong><div id="feasibilityDetails"></div><button type="button" id="reduceMutation">Chercher une intensité géométriquement plus plausible</button><p class="note">Diagnostic indicatif sans simulation textile ; « plausible » ne signifie jamais « prêt à coudre ».</p></div>
+    <div class="metrics"><div><span>Auto-intersections</span><strong id="intersections">0</strong></div><div><span>Écart couture max.</span><strong id="mismatch">0 %</strong></div><div><span>Raccords inversés</span><strong id="rewired">0</strong></div></div><div id="alerts" class="alerts"></div>
+  </article><article class="info"><h3>Journal des perturbations</h3><ol id="events" class="event-list"></ol><h3>Écarts par couture</h3><div id="seams" class="seam-list"></div><h3>Ajustements automatiques</h3><div id="fitSummary" class="fit-summary" aria-live="polite"></div></article></div>
+  <div class="footnote">OUTIL DE RECHERCHE · PDF local, pas de téléchargement vers un serveur · Lignes de couture sans marges · Coupez une toile d'essai seulement après contrôle manuel des pièces et de leur échelle. Aucune certification de fit ; drapé de démonstration non calibré.</div>
+</div></main>
+
+<script src="seam-graph.js"></script><script src="auto-pipeline.js"></script><script src="stitch-fit.js"></script><script src="pattern-intelligence.js"></script><script src="draft.js"></script><script src="experimental.js"></script><script src="engine.js"></script><script src="print.js"></script><script src="app.js"></script><script src="pako_inflate.min.js"></script><script src="pdf-import.js"></script><script src="pdf-ui.js"></script><script src="garmentcode-bridge.js"></script><script src="seam-ml.js"></script><script src="panel-physics.js"></script><script src="volume-preview.js"></script><script src="garmentcode-ui.js"></script>
+</body></html>

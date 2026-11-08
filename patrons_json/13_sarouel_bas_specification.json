@@ -1,0 +1,491 @@
+{
+  "properties": {
+    "units_in_meter": 100,
+    "curvature_coords": "relative",
+    "normalized_edge_loops": true
+  },
+  "pattern": {
+    "panel_order": [
+      "jambe_devant_gauche",
+      "jambe_dos_gauche",
+      "jambe_devant_droite",
+      "jambe_dos_droite"
+    ],
+    "panels": {
+      "jambe_devant_gauche": {
+        "vertices": [
+          [
+            -24,
+            -40
+          ],
+          [
+            -10.0,
+            -50.44
+          ],
+          [
+            -10.0,
+            -97
+          ],
+          [
+            14.0,
+            -97
+          ],
+          [
+            32,
+            -32.5
+          ],
+          [
+            20,
+            0
+          ],
+          [
+            -20,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "fourche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "entrejambe"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "cote_jambe"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "cote_hanche"
+          },
+          {
+            "endpoints": [
+              5,
+              6
+            ],
+            "label": "taille"
+          },
+          {
+            "endpoints": [
+              6,
+              0
+            ],
+            "label": "montant"
+          }
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "translation": [
+          -18,
+          0,
+          13
+        ]
+      },
+      "jambe_dos_gauche": {
+        "vertices": [
+          [
+            -24,
+            -40
+          ],
+          [
+            -10.0,
+            -50.44
+          ],
+          [
+            -10.0,
+            -97
+          ],
+          [
+            14.0,
+            -97
+          ],
+          [
+            32,
+            -32.5
+          ],
+          [
+            20,
+            0
+          ],
+          [
+            -20,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "fourche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "entrejambe"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "cote_jambe"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "cote_hanche"
+          },
+          {
+            "endpoints": [
+              5,
+              6
+            ],
+            "label": "taille"
+          },
+          {
+            "endpoints": [
+              6,
+              0
+            ],
+            "label": "montant"
+          }
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ],
+        "translation": [
+          -18,
+          0,
+          -13
+        ]
+      },
+      "jambe_devant_droite": {
+        "vertices": [
+          [
+            -24,
+            -40
+          ],
+          [
+            -10.0,
+            -50.44
+          ],
+          [
+            -10.0,
+            -97
+          ],
+          [
+            14.0,
+            -97
+          ],
+          [
+            32,
+            -32.5
+          ],
+          [
+            20,
+            0
+          ],
+          [
+            -20,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "fourche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "entrejambe"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "cote_jambe"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "cote_hanche"
+          },
+          {
+            "endpoints": [
+              5,
+              6
+            ],
+            "label": "taille"
+          },
+          {
+            "endpoints": [
+              6,
+              0
+            ],
+            "label": "montant"
+          }
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "translation": [
+          18,
+          0,
+          13
+        ]
+      },
+      "jambe_dos_droite": {
+        "vertices": [
+          [
+            -24,
+            -40
+          ],
+          [
+            -10.0,
+            -50.44
+          ],
+          [
+            -10.0,
+            -97
+          ],
+          [
+            14.0,
+            -97
+          ],
+          [
+            32,
+            -32.5
+          ],
+          [
+            20,
+            0
+          ],
+          [
+            -20,
+            0
+          ]
+        ],
+        "edges": [
+          {
+            "endpoints": [
+              0,
+              1
+            ],
+            "label": "fourche"
+          },
+          {
+            "endpoints": [
+              1,
+              2
+            ],
+            "label": "entrejambe"
+          },
+          {
+            "endpoints": [
+              2,
+              3
+            ],
+            "label": "ourlet"
+          },
+          {
+            "endpoints": [
+              3,
+              4
+            ],
+            "label": "cote_jambe"
+          },
+          {
+            "endpoints": [
+              4,
+              5
+            ],
+            "label": "cote_hanche"
+          },
+          {
+            "endpoints": [
+              5,
+              6
+            ],
+            "label": "taille"
+          },
+          {
+            "endpoints": [
+              6,
+              0
+            ],
+            "label": "montant"
+          }
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ],
+        "translation": [
+          18,
+          0,
+          -13
+        ]
+      }
+    },
+    "stitches": [
+      [
+        {
+          "panel": "jambe_devant_gauche",
+          "edge": 4
+        },
+        {
+          "panel": "jambe_dos_gauche",
+          "edge": 4
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_gauche",
+          "edge": 3
+        },
+        {
+          "panel": "jambe_dos_gauche",
+          "edge": 3
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_gauche",
+          "edge": 1
+        },
+        {
+          "panel": "jambe_dos_gauche",
+          "edge": 1
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_droite",
+          "edge": 4
+        },
+        {
+          "panel": "jambe_dos_droite",
+          "edge": 4
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_droite",
+          "edge": 3
+        },
+        {
+          "panel": "jambe_dos_droite",
+          "edge": 3
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_droite",
+          "edge": 1
+        },
+        {
+          "panel": "jambe_dos_droite",
+          "edge": 1
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_gauche",
+          "edge": 0
+        },
+        {
+          "panel": "jambe_devant_droite",
+          "edge": 0
+        }
+      ],
+      [
+        {
+          "panel": "jambe_devant_gauche",
+          "edge": 6
+        },
+        {
+          "panel": "jambe_devant_droite",
+          "edge": 6
+        }
+      ],
+      [
+        {
+          "panel": "jambe_dos_gauche",
+          "edge": 0
+        },
+        {
+          "panel": "jambe_dos_droite",
+          "edge": 0
+        }
+      ],
+      [
+        {
+          "panel": "jambe_dos_gauche",
+          "edge": 6
+        },
+        {
+          "panel": "jambe_dos_droite",
+          "edge": 6
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+-r requirements.txt
+scipy>=1.11
+trimesh>=4.0
+shapely>=2.0
+matplotlib>=3.7
+pytest>=8.0
